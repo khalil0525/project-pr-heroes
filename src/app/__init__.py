@@ -1,13 +1,15 @@
-from flask import Flask, request
+
+import os
+from flask import Flask
 from dotenv import load_dotenv
 from peewee import *
-import os
+
 import datetime
 
 load_dotenv()
 app = Flask(__name__)
 if os.getenv("TESTING") == "true":
-    print("Runnin in test mode")
+    print("Running in test mode")
     mydb = SqliteDatabase("file:memory?mode=memory&cache=shared", uri=True)
 else:
     mydb = MySQLDatabase(
@@ -18,21 +20,10 @@ else:
         port=3306,
     )
 
-
-class TimelinePost(Model):
-    name = CharField()
-    email = CharField()
-    content = TextField()
-    created_at = DateTimeField(default=datetime.datetime.now)
-
-    class Meta:
-        database = mydb
-
+from .models.timelinepost import TimelinePost
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
 
+from . import routes
 
-from src.app import routes
-
-print(mydb)

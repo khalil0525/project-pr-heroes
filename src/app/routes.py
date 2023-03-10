@@ -4,8 +4,8 @@ import re
 from flask import render_template, url_for, request, Response
 from playhouse.shortcuts import model_to_dict
 
-from src.app import TimelinePost
-from src.app import app
+from .models.timelinepost import TimelinePost
+from . import app
 from .models.experience import Experience
 from .models.education import Education
 from .models.hobbies import Hobbies
