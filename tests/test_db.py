@@ -34,16 +34,19 @@ class TestTimelinePost(unittest.TestCase):
             name="John Doe", email="john@example.com", content="Hello World, I'm John!"
         )
         assert first_post.id == 1
-        second_post = TimelinePost.create(
-            name="Jane Doe", email="jane@example.com", content="Hello World, I'm Jane!"
+        
+        get_first_post = TimelinePost.get_by_id(1)
+
+        assert (
+            get_first_post.name == "John Doe"
+            and get_first_post.email == "john@example.com"
+            and get_first_post.content == "Hello world, I'm John!"
         )
-        assert second_post.id == 2
-        # TODO: Get timeline posts and assert that they are correct
-        timeline_posts = {
-            "timeline_posts": [
-                model_to_dict(p)
-                for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
-            ]
-        }
-        posts = timeline_posts.get("timeline_posts")
-        assert len(posts) == 2
+
+        get_first_post = TimelinePost.get_by_id(2)
+
+        assert (
+            get_first_post.name == "Jane Doe"
+            and get_first_post.email == "jane@example.com"
+            and get_first_post.content == "Hello world, I'm Jane!"
+        )
