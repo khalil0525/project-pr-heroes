@@ -2,7 +2,7 @@ import unittest
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-from src.app import TimelinePost
+from src.models.timelinepost import TimelinePost
 
 MODELS = [TimelinePost]
 
