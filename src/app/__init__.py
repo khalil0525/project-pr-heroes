@@ -24,6 +24,18 @@ from .models.timelinepost import TimelinePost
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
+mydb.close()
+@app.before_request
+def _db_connect():
+    mydb.connect()
 
+# This hook ensures that the connection is closed when we've finished
+# processing the request.
+@app.teardown_request
+def _db_close(exc):
+    if not mydb.is_closed():
+        mydb.close()
+        
 from . import routes
+
 
