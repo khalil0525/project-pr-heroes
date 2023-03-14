@@ -22,7 +22,9 @@ class AppTestCase(unittest.TestCase):
         )  # check if team cards are present since they are inserted as a component at the home page.
 
     def test_timeline(self):
+        print('here')
         response = self.client.get("/api/timeline_post")
+        
         assert response.status_code == 200
         assert response.is_json
         json = response.get_json()
