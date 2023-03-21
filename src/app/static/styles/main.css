@@ -3,7 +3,7 @@
 	--text-color: #333; /* default text color */
 	--background-color-dark: #222; /* dark mode background color */
 	--text-color-dark: #ff8400S; /* dark mode text color */
-  }
+}
 p,
 h1,
 h2,
@@ -173,72 +173,73 @@ body {
 }
 
 .banner .title {
-color: white;
-font-size: 50px;
-font-weight: 700;
+	color: white;
+	font-size: 50px;
+	font-weight: 700;
 }
 .nav-bar .navbar-nav .nav-item .nav-link {
-color: orange;
+	color: orange;
 }
 .nav-bar {
-background-color: black;
+	background-color: black;
 }
 .header-text {
-text-align: center;
-background-color: #000000;
+	text-align: center;
+	background-color: #000000;
 }
 
 .pull {
-color: orange;
-
+	color: orange;
 }
 
 .request {
-color: grey;
+	color: grey;
 }
 
 .heroes {
-color: blue;
-}	
+	color: blue;
+}
 
 .header-img img,
 .middle-img img,
 .bottom-img img {
-height: 200px;
-width: 200px;
-object-fit: cover;
+	height: 200px;
+	width: 200px;
+	object-fit: cover;
 }
 
 .header-img {
-display: flex;
-flex-direction: column; justify-content: flex-end;
-align-items: flex-end;
-margin-bottom: 40px;
-
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-bottom: 40px;
 }
 
 .middle-img {
-display: flex;
-flex-direction: column; justify-content: flex-end;
-align-items: left;
-margin-bottom: 40px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: left;
+	margin-bottom: 40px;
 }
 
 .bottom-img {
-display: flex;
-flex-direction: column; justify-content: flex-end;
-align-items: flex-end;
-margin-bottom: 50px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-bottom: 50px;
 }
 
 .light {
-background-color: var(--background-color);
-color: var(--text-color);
+	background-color: var(--background-color);
+	color: var(--text-color);
 }
 
 .dark {
-background-color: var(--background-color-dark);
-color: var(--text-color-dark);
+	background-color: var(--background-color-dark);
+	color: var(--text-color-dark);
 }
 #toggle-mode {
 	border-radius: 15px;
@@ -248,11 +249,9 @@ color: var(--text-color-dark);
 	color: white;
 	background-color: orange;
 	transition: background-color 0.5s;
-  }
-  
-  #toggle-mode:hover {
+}
+
+#toggle-mode:hover {
 	cursor: pointer;
 	background-color: gray;
-  }
-  
-  
+}
