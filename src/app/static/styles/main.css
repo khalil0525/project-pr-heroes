@@ -24,7 +24,7 @@ html {
 }
 
 body {
-	background-color: #f5f5f9;
+	background-color: #000000;
 	background-size: cover;
 	width: auto;
 	overflow-x: hidden;
@@ -254,4 +254,9 @@ body {
 #toggle-mode:hover {
 	cursor: pointer;
 	background-color: gray;
+}
+
+.hero-section {
+	width: 100vw;
+	height: 100vw;
 }
