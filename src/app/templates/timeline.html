@@ -23,6 +23,11 @@
 			href="{{ url_for('static', filename='styles/main.css') }}"
 		/>
 		<link
+			lang="sass"
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles/timeline.css') }}"
+		/>
+		<link
 			rel="icon"
 			href="{{ url_for('static', filename='img/favicon.ico') }}"
 			type="image/x-icon"
@@ -47,37 +52,42 @@
 				</a>
 			</div>
 		</header>
-
-		<main role="main">
-			<div style="height: 100vh">
-				<form
-					id="form"
-					style="
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						justify-content: center;
-						width: 600px;
-						height: 600px;
-						margin: 0 auto;
-						gap: 10px;
-					"
-				>
-					<label for="name">Name: </label>
-					<input name="name" type="text" style="width: 300px" />
-					<label for="email">Email: </label>
-					<input name="email" type="text" style="width: 300px" />
-					<label for="content">Content: </label>
+		<div class="container">
+			<div class="timeline-form">
+				<form id="form">
+					<label for="name"><span>Name: </span></label>
+					<input
+						name="name"
+						type="text"
+						class="input-field"
+						aria-required="true"
+					/>
+					<label for="email"><span>Email:</span> </label>
+					<input
+						name="email"
+						type="text"
+						class="input-field"
+						aria-required="true"
+					/>
+					<label for="content"><span>Content:</span> </label>
 					<textarea
 						name="content"
-						style="height: 200px; width: 300px"
+						class="textarea-field"
+						aria-required="true"
 					></textarea>
-					<button type="submit">Submit</button>
+					<input type="submit" />
 				</form>
-				<ul id="timelineList"></ul>
 			</div>
-		</main>
-
+			<hr
+				style="
+					width: 50vw;
+					height: 1px;
+					justify-self: center;
+					align-self: center;
+				"
+			/>
+			<ul id="timelineList"></ul>
+		</div>
 		<script
 			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -103,12 +113,21 @@
 					console.log(data);
 					data.timeline_posts.map((post) => {
 						let li = document.createElement("li");
-						li.appendChild(
-							document.createTextNode(
-								`Name:${post.name} email: ${post.email} content: ${post.content}`
-							)
+						let name = document.createElement("p");
+						let email = document.createElement("p");
+						let content = document.createElement("p");
+						name.appendChild(document.createTextNode(`Name:${post.name}`));
+						name.classList.add("name");
+						email.appendChild(document.createTextNode(`email: ${post.email}`));
+						email.classList.add("email");
+						content.appendChild(
+							document.createTextNode(`content: ${post.content}`)
 						);
-						list.appendChild(li);
+						content.classList.add("content");
+						li.appendChild(name);
+						li.appendChild(email);
+						li.appendChild(content);
+						list.append(li);
 					});
 				});
 
@@ -130,11 +149,20 @@
 					.then((res) => res.json())
 					.then((post) => {
 						let li = document.createElement("li");
-						li.appendChild(
-							document.createTextNode(
-								`Name:${post.name} email: ${post.email} content: ${post.content}`
-							)
+						let name = document.createElement("p");
+						let email = document.createElement("p");
+						let content = document.createElement("p");
+						name.appendChild(document.createTextNode(`Name:${post.name}`));
+						name.classList.add("name");
+						email.appendChild(document.createTextNode(`email: ${post.email}`));
+						email.classList.add("email");
+						content.appendChild(
+							document.createTextNode(`content: ${post.content}`)
 						);
+						content.classList.add("content");
+						li.appendChild(name);
+						li.appendChild(email);
+						li.appendChild(content);
 						list.prepend(li);
 					});
 			});
