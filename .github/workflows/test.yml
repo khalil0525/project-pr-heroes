@@ -1,13 +1,11 @@
 name: Run Tests
 
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, reopened, synchronize, closed]
   push:
     branches:
       - main
-      - styling-timeline-feature
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
 
 jobs:
   test:
@@ -15,6 +13,7 @@ jobs:
     name: Run Tests
     env:
       TESTING: true
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' || github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2

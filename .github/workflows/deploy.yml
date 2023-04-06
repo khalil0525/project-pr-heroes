@@ -1,7 +1,6 @@
 name: Deploy
 
 on:
-  workflow_dispatch:
   pull_request:
     types: [opened, reopened, synchronize, closed]
   push:
@@ -9,11 +8,11 @@ on:
       - main
       - styling-timeline-feature
 
-
 jobs:
   deploy:
     name: "Deploy to VPS"
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' || github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'styling-timeline-feature' || github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'push' && github.ref == 'refs/heads/styling-timeline-feature'
     steps:
       - name: Configure SSH
         run: |
